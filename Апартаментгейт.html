@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bg">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Намери Мария</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Shantell Sans", cursive;
+
+    }
+
+    header {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    h1 {
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .osd-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      z-index: 20000;
+    }
+
+    .osd-modal.is-open {
+      display: block;
+    }
+
+    .osd-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+    }
+
+    .osd-modal__dialog {
+      position: relative;
+      max-width: 720px;
+      margin: 8vh auto 0;
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px 18px 14px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .35);
+    }
+
+    .osd-modal__close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      border: 0;
+      background: transparent;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .link {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    #viewer {
+      background-color: #fff;
+    }
+
+    .black {
+      color: #202020;
+      font-family: "Shantell Sans", cursive;
+
+    }
+
+    @media screen and (max-width: 500px) {
+      .border p {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:title" content="Намери Мария" />
+  <meta property="og:description" content="Публичността задушава корупцията." />
+  <meta property="og:site_name" content="Намери Мария" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://namerimaria.com" />
+  <meta property="og:image" content="https://namerimaria.com/img/fb.jpeg" />
+
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/openseadragon@4.1/build/openseadragon/openseadragon.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/openseadragon@4.1/build/openseadragon/openseadragon.min.js"></script>
+</head>
+
+<body>
+  <header class="text-white text-center">
+    <a href="/"><img src="/img/logo.png" width="300"></a>
+    <br><h4 class='black'>Апартаментгейт</h4>  </header>
+  <section class="container-fluid game" style="width:99vw; max-width:100vw; padding-left:0; padding-right:0;">
+  <div id="viewer" style="width:100%; height:81vh;"></div>
+</section>
+
+<div id="popupModal" class="osd-modal" aria-hidden="true">
+  <div class="osd-modal__backdrop"></div>
+  <div class="osd-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ktbTitle">
+    <button class="osd-modal__close" type="button" aria-label="Затвори">×</button>
+    <h3 id="ktbTitle">Апартаментгейт</h3>
+    <div id="ktbBody" style="overflow: visible;">
+      <p>Скандалът „Апартаментгейт“ избухва след разкрития, отнасящи се към високопоставени
+фигури от ГЕРБ, включително Цветан Цветанов и Цецка Цачева Те се състоят в това, че
+Цветанов и Цачева са закупили луксозни жилища от строителната компания „Артекс“ на
+цени, многократно по-ниски от пазарните. Статията разглежда случая две години
+по-късно, свързвайки евтините имоти не просто с лично облагодетелстване, а със
+съмнения за политически чадър и лобизъм в полза на строителя.</p>
+<p>Ключовият момент в схемата е т.нар. „специална поправка“ в Закона за устройство на
+територията (ЗУТ), приета през 2017 г. под претекст за улесняване на инфраструктурни
+обекти. Тази законодателна промяна удължава срока на валидност на разрешителните за
+строеж, което се оказва решаващо за небостъргача „Златен век“ на „Артекс“
+, чието
+разрешително иначе би изтекло.</p>
+<p>Анализът заключава, че „Апартаментгейт“ намира своето обяснение именно чрез казуса
+„Златен век“
+. Връзката между евтините апартаменти за властта и законодателния подарък
+за строителната фирма илюстрира механизъм, посредством който държавният апарат е
+използван за обслужване на частни корпоративни интереси в замяна на материални
+придобивки за политическия елит.</p>
+<br>
+      <a href="https://www.svobodnaevropa.bg/a/31322298.html"
+        target="_blank">Научи повече!</a>
+
+<br><br>      <br><br>
+      Публичността задушава корупцията!
+      <br><br>
+      <a href="https://www.facebook.com/ElvesBG.EU" target="_blank"><img src="/img/elf.png" width="200"></a>
+      <br><br>
+      <br><br>
+      <br><br>
+    </div>
+  </div>
+</div>
+
+<style>
+  .osd-modal__dialog {
+    max-height: 90vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .osd-modal__backdrop {
+    overscroll-behavior: contain;
+  }
+</style>
+
+<script>
+
+  const hotspots = [
+    {
+  "x": 0.200833,
+  "y": 0.511823,
+  "w": 0.075833,
+  "h": 0.0825,
+        "href": "#Информация",
+        "title": "Апартаментгейт"
+    }
+  ];
+
+
+
+  const viewer = OpenSeadragon({
+    id: "viewer",
+    prefixUrl: "https://cdn.jsdelivr.net/npm/openseadragon@4.1/build/openseadragon/images/",
+    tileSources: {
+      type: "image",
+      url: "/img/apgate.jpeg"
+    },
+    showNavigator: false,
+    showZoomControl: true,
+    showHomeControl: true,
+    showFullPageControl: true,
+    constrainDuringPan: true,
+    visibilityRatio: 1.0,
+    maxZoomPixelRatio: 20,
+    zoomPerScroll: 1.2,
+    gestureSettingsTouch: { pinchToZoom: true },
+    gestureSettingsMouse: { clickToZoom: false, dblClickToZoom: true }
+  });
+
+
+  viewer.addHandler('open', () => {
+    const img = viewer.world.getItemAt(0);
+    const contentSize = img.getContentSize();
+
+    viewer.viewport.goHome(true);
+    const minZoom = viewer.viewport.getZoom(true);
+    viewer.viewport.minZoomLevel = minZoom;
+
+    const zoom = minZoom * 2.5; // example: 2.5x zoom
+    viewer.viewport.zoomTo(zoom, null, true);
+
+    viewer.viewport.panTo(
+      new OpenSeadragon.Point(0, 0),
+      true
+    );
+
+    viewer.viewport.applyConstraints();
+
+
+
+
+    hotspots.forEach((hs, idx) => {
+      const el = document.createElement('a');
+      el.href = hs.href;
+      el.title = hs.title || '';
+
+      const isExternal = /^https?:\/\//i.test(hs.href);
+
+      el.style.display = 'block';
+      el.style.width = '100%';
+      el.style.height = '100%';
+      el.style.cursor = 'pointer';
+      el.style.pointerEvents = 'auto';
+      el.style.touchAction = 'manipulation';
+      el.style.webkitTapHighlightColor = 'transparent';
+      el.style.zIndex = '9999';
+      el.style.background = 'rgba(0, 0, 0, 0)';
+      // дебъг:
+      // el.style.background = 'rgba(255, 0, 0, 0.15)';
+      // el.style.border = '1px solid rgba(255,0,0,0.35)';
+      el.style.borderRadius = '6px';
+
+      const isPopupLink = (hs.href || '').startsWith('#Информация');
+
+      const activateHotspot = () => {
+        if (isPopupLink) {
+          openPopup();
+        } else if (isExternal) {
+          window.open(hs.href, '_blank', 'noopener,noreferrer');
+        } else {
+          window.location.href = hs.href;
+        }
+      };
+
+      // Android/Chrome can swallow OpenSeadragon MouseTracker tap events on overlays.
+      // Use explicit (non-passive) DOM handlers and stop propagation so OSD doesn't treat it as pan/zoom.
+      const onActivate = (e) => {
+        if (!e) return;
+        e.preventDefault();
+        e.stopPropagation();
+        activateHotspot();
+      };
+
+      el.addEventListener('click', onActivate, { passive: false });
+      el.addEventListener('touchend', onActivate, { passive: false });
+      el.addEventListener('pointerup', onActivate, { passive: false });
+
+      const imageRect = new OpenSeadragon.Rect(
+        hs.x * contentSize.x,
+        hs.y * contentSize.y,
+        hs.w * contentSize.x,
+        hs.h * contentSize.y
+      );
+
+      const viewportRect = img.imageToViewportRectangle(imageRect);
+
+      viewer.addOverlay({
+        element: el,
+        location: viewportRect,
+        placement: OpenSeadragon.Placement.TOP_LEFT
+      });
+    });
+  });
+
+  const popupModal = document.getElementById('popupModal');
+  const openPopup = () => { popupModal.classList.add('is-open'); popupModal.setAttribute('aria-hidden', 'false'); };
+  const closeKtb = () => { popupModal.classList.remove('is-open'); popupModal.setAttribute('aria-hidden', 'true'); };
+
+  popupModal.querySelector('.osd-modal__close').addEventListener('click', closeKtb);
+  popupModal.querySelector('.osd-modal__backdrop').addEventListener('click', closeKtb);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeKtb(); });
+
+</script>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
