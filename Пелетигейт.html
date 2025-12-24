@@ -187,6 +187,7 @@
   "w": 0.065833,
   "h": 0.1025,
         "href": "#Информация",
+        "popup": true,
         "title": "Пелетигейт"
     }
   ];
@@ -213,7 +214,7 @@
   });
 
 
-  viewer.addHandler('open', () => {
+viewer.addHandler('open', () => {
     const img = viewer.world.getItemAt(0);
     const contentSize = img.getContentSize();
 
@@ -242,11 +243,8 @@
       const isExternal = /^https?:\/\//i.test(hs.href);
 
       el.style.display = 'block';
-      el.style.width = '100%';
-      el.style.height = '100%';
       el.style.cursor = 'pointer';
-      el.style.pointerEvents = 'auto';
-      el.style.touchAction = 'manipulation';
+      el.style.touchAction = 'none';
       el.style.webkitTapHighlightColor = 'transparent';
       el.style.zIndex = '9999';
       el.style.background = 'rgba(0, 0, 0, 0)';
@@ -255,10 +253,11 @@
       // el.style.border = '1px solid rgba(255,0,0,0.35)';
       el.style.borderRadius = '6px';
 
-      const isPopupLink = (hs.href || '').startsWith('#Информация');
+      const isPopupLink = hs.popup;
 
       const activateHotspot = () => {
         if (isPopupLink) {
+          console.log("popup link")
           openPopup();
         } else if (isExternal) {
           window.open(hs.href, '_blank', 'noopener,noreferrer');
@@ -267,18 +266,17 @@
         }
       };
 
-      // Android/Chrome can swallow OpenSeadragon MouseTracker tap events on overlays.
-      // Use explicit (non-passive) DOM handlers and stop propagation so OSD doesn't treat it as pan/zoom.
       const onActivate = (e) => {
         if (!e) return;
         e.preventDefault();
         e.stopPropagation();
+        if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
         activateHotspot();
       };
 
-      el.addEventListener('click', onActivate, { passive: false });
-      el.addEventListener('touchend', onActivate, { passive: false });
-      el.addEventListener('pointerup', onActivate, { passive: false });
+      el.addEventListener('pointerdown', onActivate, { capture: true, passive: false });
+      el.addEventListener('click', onActivate, { capture: true, passive: false });
+      el.addEventListener('touchend', onActivate, { capture: true, passive: false });
 
       const imageRect = new OpenSeadragon.Rect(
         hs.x * contentSize.x,
@@ -305,7 +303,8 @@
   popupModal.querySelector('.osd-modal__backdrop').addEventListener('click', closeKtb);
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeKtb(); });
 
-</script>  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KG5BJ6V9WC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
